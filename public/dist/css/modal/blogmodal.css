@@ -1,0 +1,245 @@
+/* Add Blog Modal CSS */
+/* Background overlay */
+#addBlogModal {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+}
+
+/* Modal container */
+#addBlogModal .bg-white {
+    background-color: #ffffff; /* White background for modal */
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 1rem; /* Padding around content */
+    max-width: 90%; /* Responsive max width */
+    width: 500px; /* Fixed width for medium screens */
+    max-height: 80vh; /* Max height 80% of viewport */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+    margin: auto;
+}
+
+/* Hide the scrollbar */
+#addBlogModal .bg-white::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in webkit browsers */
+}
+
+#addBlogModal .bg-white {
+    -ms-overflow-style: none; /* Hide scrollbar in IE */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* Modal header */
+#addBlogModal .border-b {
+    border-bottom: 1px solid #e5e7eb; /* Light gray border */
+    padding-bottom: 0.5rem; /* Reduce padding */
+}
+
+#addBlogModal h3 {
+    font-size: 1rem; /* Header font size */
+    font-weight: 600; /* Semi-bold font */
+    color: #1f2937; /* Dark gray text */
+}
+
+#addBlogModal button#closeAddBlogModal {
+    font-size: 1.5rem; /* Close button font size */
+    color: #6b7280; /* Gray color */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+#addBlogModal button#closeAddBlogModal:hover {
+    color: #374151; /* Darker gray on hover */
+}
+
+/* Form styling */
+#addBlogModal form label {
+    font-size: 0.75rem; /* Small label font size */
+    font-weight: 500; /* Semi-bold label font */
+    color: #374151; /* Dark gray for labels */
+}
+
+#addBlogModal form input,
+#addBlogModal form select,
+#addBlogModal form textarea {
+    width: 100%;
+    font-size: 0.75rem; /* Small input font size */
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 0.375rem; /* Rounded corners */
+    padding: 0.4rem; /* Padding inside inputs */
+    color: #111827; /* Dark gray text */
+    background-color: #f9fafb; /* Light gray background */
+    transition: border-color 0.3s ease; /* Smooth border focus effect */
+}
+
+#addBlogModal form input:focus,
+#addBlogModal form select:focus,
+#addBlogModal form textarea:focus {
+    border-color: #2563eb; /* Blue border on focus */
+    outline: none;
+    background-color: #ffffff; /* White background on focus */
+}
+
+/* Submit button */
+#addBlogModal button[type="submit"] {
+    background-color: #2563eb; /* Blue background */
+    color: #ffffff; /* White text */
+    font-size: 0.75rem; /* Small font size */
+    padding: 0.4rem 0.8rem; /* Button padding */
+    border-radius: 0.375rem; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+#addBlogModal button[type="submit"]:hover {
+    background-color: #1d4ed8; /* Darker blue on hover */
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    #addBlogModal .bg-white {
+        max-width: 90%; /* Full width on smaller screens */
+        width: auto; /* Auto width for small screens */
+        padding: 0.8rem; /* Reduce padding */
+    }
+
+    #addBlogModal h3 {
+        font-size: 0.9rem; /* Adjust header font size */
+    }
+
+    #addBlogModal form input,
+    #addBlogModal form select,
+    #addBlogModal form textarea {
+        font-size: 0.7rem; /* Smaller font size for inputs */
+    }
+
+    #addBlogModal button[type="submit"] {
+        font-size: 0.7rem; /* Smaller button text */
+        padding: 0.3rem 0.6rem; /* Adjust button padding */
+    }
+}
+
+
+
+
+/* Edit Blog Modal CSS */
+
+/* Background overlay */
+#editBlogModal {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+}
+
+/* Modal container */
+#editBlogModal .bg-white {
+    background-color: #ffffff; /* White background for modal */
+    border-radius: 0.5rem; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 1rem; /* Padding around content */
+    max-width: 90%; /* Responsive max width */
+    width: 500px; /* Fixed width for medium screens */
+    max-height: 80vh; /* Max height 80% of viewport */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+    margin: auto;
+}
+
+/* Hide the scrollbar */
+#editBlogModal .bg-white::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in webkit browsers */
+}
+
+#editBlogModal .bg-white {
+    -ms-overflow-style: none; /* Hide scrollbar in IE */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* Modal header */
+#editBlogModal .border-b {
+    border-bottom: 1px solid #e5e7eb; /* Light gray border */
+    padding-bottom: 0.5rem; /* Reduce padding */
+}
+
+#editBlogModal h3 {
+    font-size: 1rem; /* Header font size */
+    font-weight: 600; /* Semi-bold font */
+    color: #1f2937; /* Dark gray text */
+}
+
+#editBlogModal button#closeEditBlogModal {
+    font-size: 1rem; /* Close button font size */
+    color: #6b7280; /* Gray color */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+#editBlogModal button#closeEditBlogModal:hover {
+    color: #374151; /* Darker gray on hover */
+}
+
+/* Form styling */
+#editBlogModal form label {
+    font-size: 0.75rem; /* Small label font size */
+    font-weight: 500; /* Semi-bold label font */
+    color: #374151; /* Dark gray for labels */
+}
+
+#editBlogModal form input,
+#editBlogModal form select,
+#editBlogModal form textarea {
+    width: 100%;
+    font-size: 0.75rem; /* Small input font size */
+    border: 1px solid #d1d5db; /* Light gray border */
+    border-radius: 0.375rem; /* Rounded corners */
+    padding: 0.4rem; /* Padding inside inputs */
+    color: #111827; /* Dark gray text */
+    background-color: #f9fafb; /* Light gray background */
+    transition: border-color 0.3s ease; /* Smooth border focus effect */
+}
+
+#editBlogModal form input:focus,
+#editBlogModal form select:focus,
+#editBlogModal form textarea:focus {
+    border-color: #2563eb; /* Blue border on focus */
+    outline: none;
+    background-color: #ffffff; /* White background on focus */
+}
+
+/* Error message */
+#errorBlogMessage {
+    font-size: 0.65rem; /* Small error message font size */
+    color: #dc2626; /* Red color for error text */
+}
+
+/* Submit button */
+#editBlogModal button[type="submit"] {
+    background-color: #2563eb; /* Blue background */
+    color: #ffffff; /* White text */
+    font-size: 0.75rem; /* Small font size */
+    padding: 0.4rem 0.8rem; /* Button padding */
+    border-radius: 0.375rem; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+#editBlogModal button[type="submit"]:hover {
+    background-color: #1d4ed8; /* Darker blue on hover */
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    #editBlogModal .bg-white {
+        max-width: 90%; /* Full width on smaller screens */
+        width: auto; /* Auto width for small screens */
+        padding: 0.8rem; /* Reduce padding */
+    }
+
+    #editBlogModal h3 {
+        font-size: 0.9rem; /* Adjust header font size */
+    }
+
+    #editBlogModal form input,
+    #editBlogModal form select,
+    #editBlogModal form textarea {
+        font-size: 0.7rem; /* Smaller font size for inputs */
+    }
+
+    #editBlogModal button[type="submit"] {
+        font-size: 0.7rem; /* Smaller button text */
+        padding: 0.3rem 0.6rem; /* Adjust button padding */
+    }
+}
