@@ -88,7 +88,11 @@
             <div class="news-standard-wrapper">
                 <div class="row g-5">
                     <div class="col-12 col-lg-8">
-<div class="news-standard-items">
+                    <div class="news-standard-items">
+    @if ($tag)
+        <h4>Blogs with tag: <strong>{{ $tag }}</strong></h4>
+    @endif
+
     @if ($blogs->isNotEmpty())
         @foreach($blogs as $blog)
             <div class="blog-item mb-6">
@@ -101,7 +105,6 @@
                 </div>
                 <div class="news-content">
                     <div class="post-meta">
-                        
                         <span><i class="fal fa-calendar-alt"></i>{{ $blog->created_at->format('dS F Y') }}</span>
                     </div>
                     <h3 class="wow fadeInUp" data-wow-delay=".3s">
@@ -116,12 +119,13 @@
                 </div>
             </div>
         @endforeach
-        @else
-                            <div class="no-results">
-                                <p>No blogs found matching your search criteria.</p>
-                            </div>
-                        @endif
+    @else
+        <div class="no-results">
+            <p>No blogs found matching your search criteria.</p>
+        </div>
+    @endif
 </div>
+
 
 <!-- Pagination -->
 <div class="page-nav-wrap mt-5 text-center">
@@ -197,21 +201,28 @@
 </div>
 
                             
-                            <div class="single-sidebar-widget">
-                                <div class="wid-title">
-                                    <h5>Populer Tags</h5>
-                                </div>
-                                <div class="tagcloud">
-                                    <a href="news-details.html">symphony</a>     
-                                    <a href="news-details.html">nokia</a>
-                                    <a href="news-details.html">nokia</a>
-                                    <a href="news-details.html">Samsung</a>
-                                    <a href="news-details.html">Alcatel</a>
-                                    <a href="news-details.html">Oppos</a>
-                                    <a href="news-details.html">landing</a>
-                                    <a href="news-details.html">Oppos</a>
-                                </div>
-                            </div>
+<div class="single-sidebar-widget">
+    <div class="wid-title">
+        <h5>Popular Tags</h5>
+    </div>
+    <div class="tagcloud">
+        @if($popularTags && $popularTags->isNotEmpty())
+            @foreach($popularTags as $tagData)
+                <a href="{{ route('blogs.index', ['tag' => $tagData['tag']]) }}">
+                    {{ $tagData['tag'] }}
+                </a>
+            @endforeach
+        @else
+            <p>No tags available</p>
+        @endif
+    </div>
+</div>
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>

@@ -28,7 +28,6 @@ class BlogController extends Controller
         'motivasi' => 'nullable|string|max:255',
         'tag' => 'nullable|string',
         'like' => 'nullable|integer|min:0',
-        'comment' => 'nullable|integer|min:0',
         'view' => 'nullable|integer|min:0',
     ]);
 
@@ -45,7 +44,6 @@ class BlogController extends Controller
 
     // Tambahkan nilai default jika kosong
     $validatedData['like'] = $validatedData['like'] ?? 0;
-    $validatedData['comment'] = $validatedData['comment'] ?? 0;
     $validatedData['view'] = $validatedData['view'] ?? 0;
 
     // Simpan data ke database

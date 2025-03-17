@@ -74,7 +74,6 @@ License: You must have a valid license purchased only from themeforest(the above
    data-judul="{{ $blog->judul }}" 
    data-isi="{{ $blog->isi_blog }}" 
    data-gambar="{{ asset('storage/' . $blog->gambar) }}" 
-   data-motivasi="{{ $blog->motivasi }}" 
    data-tag="{{ implode(',', json_decode($blog->tag)) }}"  
    data-view="{{ $blog->view }}">
    <i data-lucide="edit" class="stroke-1.5 mr-2 h-4 w-4"></i>
