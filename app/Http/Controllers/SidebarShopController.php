@@ -10,35 +10,39 @@ class SidebarShopController extends Controller
 {
     public function filter(Request $request)
     {
-        // Logika filter produk berdasarkan rentang harga (seperti yang sudah ada)
         $minPrice = $request->input('min_price', 0);
         $maxPrice = $request->input('max_price', 10000);
 
+        // Validasi harga
         if ($minPrice > $maxPrice) {
             return redirect()->back()->withErrors(['message' => 'Harga minimum tidak boleh lebih besar dari harga maksimum.']);
         }
 
+        // Query produk berdasarkan harga
         $products = Product::whereBetween('price', [$minPrice, $maxPrice])
             ->orderBy('price', 'asc')
             ->paginate(10);
 
+        // Data pendukung
         $categories = Category::orderBy('id', 'asc')->get();
+        $totalProducts = Product::count();
+        $sortOption = $request->input('sort', 'default');
 
-        return view('users.shop', compact('products', 'minPrice', 'maxPrice', 'categories'));
+        return view('users.shop', compact('products', 'minPrice', 'maxPrice', 'categories', 'totalProducts', 'sortOption'));
     }
 
     public function search(Request $request)
     {
-        // Ambil kata kunci pencarian dari input form
+        $request->validate([
+            'keyword' => 'nullable|string|max:255',
+        ]);
+
         $keyword = $request->input('keyword');
-
-        // Query produk berdasarkan nama produk yang mengandung kata kunci
         $products = Product::where('product_name', 'LIKE', "%{$keyword}%")->paginate(9);
-
-        // Ambil semua kategori untuk sidebar
         $categories = Category::all();
+        $totalProducts = Product::count();
+        $sortOption = $request->input('sort', 'default');
 
-        // Kirim data ke view
-        return view('users.shop', compact('products', 'categories', 'keyword'));
+        return view('users.shop', compact('products', 'categories', 'keyword', 'totalProducts', 'sortOption'));
     }
 }

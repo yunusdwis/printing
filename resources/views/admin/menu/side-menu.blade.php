@@ -49,5 +49,16 @@
                 </div>
             </a>
         </li>
+        <li>
+            <a href="{{ url('/rubick-side-menu-contact-us-page') }}" 
+               class="side-menu {{ Request::is('rubick-side-menu-contact-us-page') ? 'side-menu--active' : '' }}">
+                <div class="side-menu__icon">
+                <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="side-menu__title">
+                    ContactUs
+                </div>
+            </a>
+        </li>
     </ul>
 </nav>

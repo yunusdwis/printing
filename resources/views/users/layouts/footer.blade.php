@@ -109,15 +109,14 @@
                             </div>
                             <div class="footer-content">
                                 <p class="text-white">
-                                    2972 Westheimer Rd. Santa Ana, <br>
-                                    Illinois 85486
+                                    
                                 </p>
                                 <ul class="contact-list">
                                     <li>
-                                        <a href="mailto:contact@info.com" class="link">contact@info.com</a>
+                                        <a href="mailto:contact@info.com" class="link">test@gmail.com</a>
                                     </li>
                                     <li>
-                                        <a href="tel:+8060008899">+81319310093</a>
+                                        <a href="tel:+8060008899">081336589373</a>
                                     </li>
                                 </ul>
                             </div>

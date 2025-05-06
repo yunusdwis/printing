@@ -17,6 +17,8 @@
         <link rel="shortcut icon" href="{{ asset('assets/img/favicon.svg') }}">
 <!--<< Bootstrap min.css >>-->
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <!--<< All Min Css >>-->
 <link rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}">
 <!--<< Animate.css >>-->
@@ -132,8 +134,9 @@
                                 faucibus odio feugiat arc dolor.
                             </p>
                             <div class="google-map wow fadeInUp" data-wow-delay=".7s">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6678.7619084840835!2d144.9618311901502!3d-37.81450084255415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642b4758afc1d%3A0x3119cc820fdfc62e!2sEnvato!5e0!3m2!1sen!2sbd!4v1641984054261!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                            </div>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+</div>
+
                         </div>
                     </div>
                     <div class="col-xl-5 col-lg-5 mt-5 mt-lg-0">
@@ -142,39 +145,44 @@
                                 <h3 class="wow fadeInUp" data-wow-delay=".3s">Fill Up The Form</h3>
                                 <p class="wow fadeInUp" data-wow-delay=".5s">Your email address will not be published. Required fields are marked *</p>
                             </div>
-                            <form action="https://devsaidul.com/ui/prinoz-gsap/contact.php" id="contact-form" method="POST">
-                                <div class="row g-4">
-                                    <div class="col-lg-12 wow fadeInUp" data-wow-delay=".3s">
-                                        <div class="form-clt">
-                                            <input type="text" name="name" id="name" placeholder="Your Name*">
-                                            <div class="icon">
-                                                <i class="fal fa-user"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
-                                        <div class="form-clt">
-                                            <input type="text" name="email" id="email" placeholder="Email Address*">
-                                            <div class="icon">
-                                                <i class="fal fa-envelope"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 wow fadeInUp" data-wow-delay=".7s">
-                                        <div class="form-clt-big form-clt">
-                                            <textarea name="message" id="message" placeholder="Enter Your Messege here"></textarea>
-                                            <div class="icon">
-                                                <i class="fal fa-edit"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 wow fadeInUp" data-wow-delay=".8s">
-                                        <button type="submit" class="theme-btn">
-                                            <i class="fal fa-paper-plane"></i> Get In Touch
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                            <form action="{{ route('contacts.store') }}" id="contact-form" method="POST">
+    @csrf
+    <div class="row g-4">
+        <div class="col-lg-12 wow fadeInUp" data-wow-delay=".3s">
+            <div class="form-clt">
+                <input type="text" name="name" id="name" placeholder="Your Name*" required>
+                <div class="icon">
+                    <i class="fal fa-user"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
+            <div class="form-clt">
+                <input type="email" name="email" id="email" placeholder="Email Address*" required>
+                <div class="icon">
+                    <i class="fal fa-envelope"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 wow fadeInUp" data-wow-delay=".7s">
+            <div class="form-clt-big form-clt">
+                <textarea name="message" id="message" placeholder="Enter Your Message here" required></textarea>
+                <div class="icon">
+                    <i class="fal fa-edit"></i>
+                </div>
+            </div>
+        </div>
+        <!-- Hidden input untuk lokasi -->
+        <input type="hidden" name="location" id="location">
+        <div class="col-lg-6 wow fadeInUp" data-wow-delay=".8s">
+            <button type="submit" class="theme-btn">
+                <i class="fal fa-paper-plane"></i> Get In Touch
+            </button>
+        </div>
+    </div>
+</form>
+
+
                         </div>
                     </div>
                 </div>
@@ -198,6 +206,8 @@
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 <!--<< Gsap Js >>-->
 <script src="{{ asset('assets/js/gsap/gsap.js') }}"></script>
+<!-- Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <!--<< Gsap Scroll To Pluging Js >>-->
 <script src="{{ asset('assets/js/gsap/gsap-scroll-to-plugin.js') }}"></script>
 <!--<< Gsap Scroll Smoother Js >>-->
@@ -222,8 +232,52 @@
 <script src="{{ asset('assets/js/jquery.magnific-popup.min.js') }}"></script>
 <!--<< Wow Animation Js >>-->
 <script src="{{ asset('assets/js/wow.min.js') }}"></script>
+
 <!--<< Main.js >>-->
 <script src="{{ asset('assets/js/main.js') }}"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const locationInput = document.getElementById('location');
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    // Simpan lokasi dalam format "latitude,longitude" ke input hidden
+                    locationInput.value = `${latitude},${longitude}`;
+
+                    // Inisialisasi peta
+                    const map = L.map('map').setView([latitude, longitude], 13);
+
+                    // Tambahkan layer peta OpenStreetMap
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    // Tambahkan marker pada lokasi pengguna
+                    L.marker([latitude, longitude]).addTo(map)
+                        .bindPopup('You are here.')
+                        .openPopup();
+                },
+                function (error) {
+                    console.error('Error obtaining location:', error);
+                    alert('Could not get your location. Please enable location services.');
+                }
+            );
+        } else {
+            alert('Geolocation is not supported by this browser.');
+        }
+    });
+</script>
+
+
+
+
+
+
     </body>
 
 <!-- Mirrored from devsaidul.com/ui/prinoz-gsap/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 04:35:05 GMT -->

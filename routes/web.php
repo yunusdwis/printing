@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('users.index');
@@ -9,6 +10,36 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('users.index');
 });
+
+Route::get('/resetpw', function () {
+    return view('auth.resetpw');
+});
+
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+
+
+Route::get('/otp', function () {
+    return view('auth.otp');
+})->name('otp.form');
+
+
+
+Route::get('/otp', [AuthController::class, 'showOtpForm'])->name('otp.verify.form');
+Route::post('/otp', [AuthController::class, 'verifyOtp'])->name('otp.verify');
+Route::post('/otp/resend', [AuthController::class, 'resendOtp'])->name('otp.resend');
+
+
+// Rute untuk menampilkan form registrasi
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
+
+// Rute untuk menangani proses registrasi
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
 
 //rute shop
 use App\Http\Controllers\ShopController;
@@ -30,6 +61,12 @@ Route::get('/shop-cart', function () {
 use App\Http\Controllers\PublicBlogController;
 
 Route::get('/blogs', [PublicBlogController::class, 'index'])->name('blogs.index');
+
+
+use App\Http\Controllers\ContactUsersController;
+
+Route::post('/contacts', [ContactUsersController::class, 'store'])->name('contacts.store');
+
 
 
 use App\Http\Controllers\PublicBlogDetaildController;
@@ -128,3 +165,7 @@ use App\Http\Controllers\SidebarShopController;
 
 Route::get('shop/filter', [SidebarShopController::class, 'filter'])->name('sidebarshop.filter');
 Route::get('/shop/search', [SidebarShopController::class, 'search'])->name('shop.search');
+
+use App\Http\Controllers\AdminContactUsersController;
+
+Route::get('/rubick-side-menu-contact-us-page', [AdminContactUsersController::class, 'index'])->name('contact-us-page');
