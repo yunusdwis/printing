@@ -49,7 +49,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="intro-y mt-8 flex flex-col items-center sm:flex-row">
                     <h2 class="mr-auto text-lg font-medium">Contact Us</h2>
                     <div class="mt-4 flex w-full sm:mt-0 sm:w-auto">
-                        <button data-tw-merge="" class="transition duration-200 border inline-flex items-center justify-center py-2 px-3 rounded-md font-medium cursor-pointer focus:ring-4 focus:ring-primary focus:ring-opacity-20 focus-visible:outline-none dark:focus:ring-slate-700 dark:focus:ring-opacity-50 [&:hover:not(:disabled)]:bg-opacity-90 [&:hover:not(:disabled)]:border-opacity-90 [&:not(button)]:text-center disabled:opacity-70 disabled:cursor-not-allowed bg-primary border-primary text-white dark:border-primary mr-2 shadow-md">Add New Post</button>
                         
                     </div>
                 </div>
@@ -60,7 +59,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="intro-y box col-span-12 md:col-span-6 xl:col-span-4">
         <div class="flex items-center border-b border-slate-200/60 px-5 py-4 dark:border-darkmode-400">
             <div class="image-fit h-10 w-10 flex-none">
-                <img class="rounded-full" src="https://via.placeholder.com/40" alt="Profile">
+            <img class="rounded-full" src="{{ $contact->user?->profile ?? 'https://via.placeholder.com/40' }}" alt="Profile">
             </div>
             <div class="ml-3 mr-auto">
                 <a class="font-medium" href="#">

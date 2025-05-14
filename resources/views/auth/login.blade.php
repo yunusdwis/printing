@@ -51,7 +51,8 @@
                             <input class="form-control" type="password" name="password" placeholder="Password" required>
                             <div class="form-button">
                                 <button id="submit" type="submit" class="ibtn">Login</button>
-                                <a href="/resetpw">Forget password?</a>
+                                <a href="{{ route('password.request') }}">Forget password?</a>
+
                             </div>
                         </form>
 

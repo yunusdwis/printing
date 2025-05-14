@@ -17,10 +17,12 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('otp_code')->nullable();  // Menyimpan OTP code (mengubah nama dari otp ke otp_code)
+            $table->string('otp_code')->nullable(); // Menyimpan OTP code
             $table->timestamp('otp_expires_at')->nullable(); // Menyimpan waktu kadaluarsa OTP
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('profile')->nullable(); // Kolom profile yang boleh kosong
+            $table->string('role')->default('user'); // Tambah kolom role
             $table->rememberToken();
             $table->timestamps();
         });

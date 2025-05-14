@@ -10,6 +10,10 @@ use Illuminate\Support\Str;
 use App\Mail\OtpVerificationMail;
 use App\Models\User;
 use Validator;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
 
 class AuthController extends Controller
 {
@@ -148,5 +152,66 @@ public function logout(Request $request)
     return redirect('/login')->with('success', 'You have been logged out.');
 }
 
+public function resetPassword(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email|exists:users,email',
+        'password' => 'required|confirmed|min:6',
+        'token' => 'required'
+    ]);
+
+    $reset = DB::table('password_resets')
+        ->where('email', $request->email)
+        ->latest('created_at')
+        ->first();
+
+    if (!$reset || !Hash::check($request->token, $reset->token)) {
+        return back()->withErrors(['email' => 'Invalid or expired reset token.']);
+    }
+
+    $user = User::where('email', $request->email)->first();
+    $user->password = Hash::make($request->password);
+    $user->save();
+
+    DB::table('password_resets')->where('email', $request->email)->delete();
+
+    return redirect()->route('login')->with('success', 'Password successfully reset.');
+}
+
+public function showResetForm(Request $request, $token)
+{
+    $email = $request->query('email');
+    return view('auth.editpwusers', ['token' => $token, 'email' => $email]);
+}
+
+public function sendResetLink(Request $request)
+{
+    $request->validate([
+        'email' => 'required|email|exists:users,email',
+    ]);
+
+    $token = Str::random(64);
+    DB::table('password_resets')->updateOrInsert(
+        ['email' => $request->email],
+        [
+            'token' => Hash::make($token),
+            'created_at' => now(),
+        ]
+    );
+
+    $resetUrl = route('password.reset', $token) . '?email=' . urlencode($request->email);
+
+    Mail::raw("Click this link to reset your password: $resetUrl", function ($message) use ($request) {
+        $message->to($request->email);
+        $message->subject('Password Reset Link');
+    });
+
+    return back()->with('success', 'We have emailed your password reset link!');
+}
+
+public function showForgotPasswordForm()
+{
+    return view('auth.resetpw');
+}
 
 }

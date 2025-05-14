@@ -150,7 +150,8 @@
     <div class="row g-4">
         <div class="col-lg-12 wow fadeInUp" data-wow-delay=".3s">
             <div class="form-clt">
-                <input type="text" name="name" id="name" placeholder="Your Name*" required>
+            <input type="text" name="name" id="name" placeholder="Your Name*" 
+            value="{{ Auth::check() ? Auth::user()->name : '' }}" required readonly>
                 <div class="icon">
                     <i class="fal fa-user"></i>
                 </div>
@@ -158,7 +159,8 @@
         </div>
         <div class="col-lg-12 wow fadeInUp" data-wow-delay=".5s">
             <div class="form-clt">
-                <input type="email" name="email" id="email" placeholder="Email Address*" required>
+            <input type="email" name="email" id="email" placeholder="Email Address*" 
+            value="{{ Auth::check() ? Auth::user()->email : '' }}" required readonly>
                 <div class="icon">
                     <i class="fal fa-envelope"></i>
                 </div>

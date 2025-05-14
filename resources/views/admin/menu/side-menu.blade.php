@@ -17,6 +17,17 @@
             </a>
         </li>
         <li>
+            <a href="{{ url('/rubick-side-menu-users-layout-2-page') }}" 
+               class="side-menu {{ Request::is('rubick-side-menu-users-layout-2-page') ? 'side-menu--active' : '' }}">
+                <div class="side-menu__icon">
+                <i class="fa-solid fa-wrench"></i>
+                </div>
+                <div class="side-menu__title">
+                    Users
+                </div>
+            </a>
+        </li>
+        <li>
             <a href="{{ url('/rubick-side-menu-product-list-page') }}" 
                class="side-menu {{ Request::is('rubick-side-menu-product-list-page') || Request::is('rubick-side-menu-categories-page') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon">

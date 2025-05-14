@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
 <style>
+
+    
     .product-image {
     width: 100%; /* Lebar container gambar */
     height: 200px; /* Tinggi container gambar */

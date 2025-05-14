@@ -9,21 +9,21 @@ use Illuminate\Support\Facades\Http;
 class AdminContactUsersController extends Controller
 {
     public function index()
-    {
-        // Ambil semua data dari tabel contacts
-        $contacts = Contact::all();
+{
+    // Langsung ambil contacts dengan user-nya
+    $contacts = Contact::with('user')->get();
 
-        foreach ($contacts as $contact) {
-            if ($contact->location) {
-                // Ambil alamat deskriptif dari koordinat
-                $contact->formatted_address = $this->getAddressFromCoordinates($contact->location);
-            } else {
-                $contact->formatted_address = 'Alamat tidak tersedia';
-            }
+    foreach ($contacts as $contact) {
+        if ($contact->location) {
+            $contact->formatted_address = $this->getAddressFromCoordinates($contact->location);
+        } else {
+            $contact->formatted_address = 'Alamat tidak tersedia';
         }
-
-        return view('admin.rubick-side-menu-contact-us-page', compact('contacts'));
     }
+
+    return view('admin.rubick-side-menu-contact-us-page', compact('contacts'));
+}
+
 
     private function getAddressFromCoordinates($coordinates)
     {

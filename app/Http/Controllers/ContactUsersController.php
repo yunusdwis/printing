@@ -22,6 +22,8 @@ class ContactUsersController extends Controller
         'location' => 'nullable|string',
     ]);
 
+    $validated['user_id'] = auth()->id(); // Tambah user_id
+
     Contact::create($validated);
 
     return redirect()->back()->with('success', 'Your message has been sent. Thank you!');

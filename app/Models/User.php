@@ -14,7 +14,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'role',          // ✅ tambahkan role
+        'profile',       // ✅ tambahkan profile jika ingin bisa diisi secara massal
+        'otp_code',      // ✅ tambahkan jika kamu ingin isi OTP via mass assignment
+        'otp_expires_at' // ✅ jika juga ingin digunakan
     ];
+    
 
     protected $hidden = [
         'password',

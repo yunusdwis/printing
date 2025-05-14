@@ -41,20 +41,32 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-end align-items-center">
+    <!-- Profile Icon with margin -->
+    <div class="me-3">
+        <a href="{{ url('/profile') }}">
+            <i class="fas fa-user fa-lg" style="color: #000;"></i>
+        </a>
+    </div>
 
-                        <div class="content">
-                            <p>HOTLINE</p>
-                            <h5><a href="tel:00190081889">081336589373</a></h5>
-                        </div>
-                        <div class="header-button">
-                           
-                        </div>
-                        <div class="header__hamburger d-xl-none my-auto">
-                            <div class="sidebar__toggle">
-                                <i class="fas fa-bars"></i>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Hotline Content -->
+    <div class="content">
+        <p>HOTLINE</p>
+        <h5><a href="tel:00190081889">081336589373</a></h5>
+    </div>
+
+    <!-- Optional Button Section -->
+    <div class="header-button">
+        <!-- Additional buttons here if needed -->
+    </div>
+
+    <!-- Mobile Hamburger Menu -->
+    <div class="header__hamburger d-xl-none my-auto">
+        <div class="sidebar__toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</div>
+
                 </div>
             </div>
         </div>

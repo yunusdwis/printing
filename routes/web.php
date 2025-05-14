@@ -11,10 +11,28 @@ Route::get('/home', function () {
     return view('users.index');
 });
 
-Route::get('/resetpw', function () {
-    return view('auth.resetpw');
+
+
+use App\Http\Controllers\ProfileController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
+
+
+// Menampilkan form input email
+Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
+
+// Menangani submit email
+Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])->name('password.email');
+
+// Menampilkan form reset password (via link dari email)
+Route::get('/reset-password/{token}', [AuthController::class, 'showResetForm'])->name('password.reset');
+
+// Menangani submit password baru
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
@@ -105,6 +123,8 @@ Route::get('/about', function () {
 
 
 
+
+
 /*
 Route admin rubick
 */
@@ -169,3 +189,23 @@ Route::get('/shop/search', [SidebarShopController::class, 'search'])->name('shop
 use App\Http\Controllers\AdminContactUsersController;
 
 Route::get('/rubick-side-menu-contact-us-page', [AdminContactUsersController::class, 'index'])->name('contact-us-page');
+
+
+
+use App\Http\Controllers\UsersManegementController;
+
+// Route untuk menampilkan daftar pengguna
+Route::get('/rubick-side-menu-users-layout-2-page', [UsersManegementController::class, 'index'])->name('users.index');
+
+// Route untuk menyimpan user baru
+Route::post('/create-user', [UsersManegementController::class, 'store'])->name('users.store');
+
+Route::post('/update-user/{id}', [UsersManegementController::class, 'update'])->name('users.update');
+Route::put('/update-user/{id}', [UsersManegementController::class, 'update'])->name('users.update');
+
+
+Route::delete('/users/{id}', [UsersManegementController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/users/{id}', [UsersManegementController::class, 'show'])->name('users.show');
+
+

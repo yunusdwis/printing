@@ -32,12 +32,14 @@
                     <div class="form-items">
                         <h3>Forget Password</h3>
                         <p>Please enter your email address:</p>
-                        <form action="" method="POST">
-                            <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-                            <div class="form-button">
-                                <button id="submit" type="submit" class="ibtn">Send</button>
-                            </div>
-                        </form>
+                        <form action="{{ route('password.email') }}" method="POST">
+    @csrf
+    <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
+    <div class="form-button">
+        <button type="submit" class="ibtn">Send</button>
+    </div>
+</form>
+
 
                         <div class="page-links" style="margin-top: 20px;">
                             <a href="{{ route('login') }}">Back to Login</a>
