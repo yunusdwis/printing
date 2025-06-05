@@ -41,9 +41,14 @@ class ProfileController extends Controller
                 Storage::disk('public')->delete($user->profile);
             }
         
-            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
-            $user->profile = $path;
+            $file = $request->file('profile_picture');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/profile_images', $filename);
+        
+            // Simpan path dengan prefix 'storage/' agar konsisten dengan admin
+            $user->profile = 'storage/profile_images/' . $filename;
         }
+        
         
     
         $user->save();

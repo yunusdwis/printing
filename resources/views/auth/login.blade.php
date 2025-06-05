@@ -58,7 +58,7 @@
 
                         <div class="other-links social-with-title">
                             <div class="text">Or login with</div>
-                            <a href="#"><i class="fab fa-google"></i>Google</a>
+                            <a href="{{ route('google.login') }}"><i class="fab fa-google"></i>Google</a>
                         </div>
                         <div class="page-links">
                             <a href="{{ route('register') }}">Register new account</a>

@@ -9,7 +9,7 @@
             <a href="{{ url('/rubick-side-menu-dashboard-overview-1-page') }}" 
                class="side-menu {{ Request::is('rubick-side-menu-dashboard-overview-1-page') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon">
-                <i class="fa-solid fa-house"></i>
+                    <i class="fa-solid fa-house"></i>
                 </div>
                 <div class="side-menu__title">
                     Dashboard
@@ -20,7 +20,7 @@
             <a href="{{ url('/rubick-side-menu-users-layout-2-page') }}" 
                class="side-menu {{ Request::is('rubick-side-menu-users-layout-2-page') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon">
-                <i class="fa-solid fa-wrench"></i>
+                    <i class="fa-solid fa-wrench"></i>
                 </div>
                 <div class="side-menu__title">
                     Users
@@ -31,7 +31,7 @@
             <a href="{{ url('/rubick-side-menu-product-list-page') }}" 
                class="side-menu {{ Request::is('rubick-side-menu-product-list-page') || Request::is('rubick-side-menu-categories-page') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon">
-                <i class="fa-solid fa-box"></i>
+                    <i class="fa-solid fa-box"></i>
                 </div>
                 <div class="side-menu__title">
                     Products
@@ -42,7 +42,7 @@
             <a href="{{ url('/rubick-side-menu-service-list-page') }}" 
                class="side-menu {{ Request::is('rubick-side-menu-service-list-page') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon">
-                <i class="fa-solid fa-wrench"></i>
+                    <i class="fa-solid fa-wrench"></i>
                 </div>
                 <div class="side-menu__title">
                     Services
@@ -53,7 +53,7 @@
             <a href="{{ url('/rubick-side-menu-blog-layout-2-page') }}" 
                class="side-menu {{ Request::is('rubick-side-menu-blog-layout-2-page') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon">
-                <i class="fa-solid fa-blog"></i>
+                    <i class="fa-solid fa-blog"></i>
                 </div>
                 <div class="side-menu__title">
                     Blogs
@@ -64,12 +64,25 @@
             <a href="{{ url('/rubick-side-menu-contact-us-page') }}" 
                class="side-menu {{ Request::is('rubick-side-menu-contact-us-page') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon">
-                <i class="fa-solid fa-phone"></i>
+                    <i class="fa-solid fa-phone"></i>
                 </div>
                 <div class="side-menu__title">
                     ContactUs
                 </div>
             </a>
+        </li>
+        <li>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="side-menu w-full text-left">
+                    <div class="side-menu__icon">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </div>
+                    <div class="side-menu__title">
+                        Logout
+                    </div>
+                </button>
+            </form>
         </li>
     </ul>
 </nav>

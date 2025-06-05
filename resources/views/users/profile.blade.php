@@ -83,9 +83,10 @@
             <div class="col-lg-4 text-center">
                 <label for="profile_picture" style="cursor: pointer;">
                 <img id="preview_image"
-     src="{{ $user->profile ? asset('storage/' . $user->profile) : asset('dist/images/fakers/profile-defult2.jpg') }}"
+     src="{{ $user->profile ? asset($user->profile) : asset('dist/images/fakers/profile-defult2.jpg') }}"
      alt="Foto Profil"
      style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 3px solid #306EE8;">
+
 
                 </label>
             </div>

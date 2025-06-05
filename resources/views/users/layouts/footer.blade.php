@@ -38,10 +38,7 @@
                                     reliable and 100% secure. claritatem itamconse quat. Exerci tation ullamcorper.
                                 </p>
                                 <div class="social-icon d-flex align-items-center">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                                    
                                 </div>
                             </div>
                         </div>

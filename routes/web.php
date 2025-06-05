@@ -3,14 +3,27 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-Route::get('/', function () {
-    return view('users.index');
-});
-
 Route::get('/home', function () {
     return view('users.index');
 });
 
+Route::get('/customprint', function () {
+    return view('users.customprint');
+});
+
+Route::get('/cart', function () {
+    return view('users.shop-cart');
+});
+
+use App\Http\Controllers\ChatbotController;
+
+Route::post('/chatbot', [ChatbotController::class, 'respond']);
+
+
+use App\Http\Controllers\SocialAuthController;
+
+Route::get('auth/google', [SocialAuthController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
 
 
 use App\Http\Controllers\ProfileController;
@@ -51,6 +64,7 @@ Route::post('/otp/resend', [AuthController::class, 'resendOtp'])->name('otp.rese
 
 // Rute untuk menampilkan form registrasi
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
+Route::get('/', [AuthController::class, 'showRegisterForm'])->name('register.form');
 
 // Rute untuk menangani proses registrasi
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -92,9 +106,7 @@ use App\Http\Controllers\PublicBlogDetaildController;
 Route::get('/blog/{id}', [PublicBlogDetaildController::class, 'show'])->name('blog.detail');
 
 
-Route::get('/contact-us', function () {
-    return view('users.contact');
-});
+
 
 Route::get('/contact', function () {
     return view('users.contact');

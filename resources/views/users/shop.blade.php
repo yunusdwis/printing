@@ -120,6 +120,9 @@
                 <li>
                     <a href="{{ route('shop-details', ['id' => $product->id]) }}"><i class="fa-sharp fa-regular fa-eye"></i></a>
                 </li>
+                <li>
+                    <a href=""><i class="fa-solid fa-plus"></i></a>
+                </li>
             </ul>
         </div>
         <div class="product-content">
@@ -149,6 +152,8 @@
 
     <!-- Footer Section Start -->
     @include('users.layouts.footer')
+
+    @include('users.component.chatbot')
 
         
        
@@ -186,6 +191,8 @@
 <script src="{{ asset('assets/js/wow.min.js') }}"></script>
 <!--<< Main.js >>-->
 <script src="{{ asset('assets/js/main.js') }}"></script>
+
+
     </body>
 
 <!-- Mirrored from devsaidul.com/ui/prinoz-gsap/shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 04:35:46 GMT -->

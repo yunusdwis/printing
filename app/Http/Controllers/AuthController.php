@@ -128,15 +128,19 @@ public function login(Request $request)
         // Jika email belum terverifikasi
         if (!$user->email_verified_at) {
             Auth::logout();
-
             return redirect()->back()->with('error', 'Please verify your email using the OTP sent before logging in.');
         }
 
         $request->session()->regenerate();
-        return redirect('/')->with('success', 'Logged in successfully.');
+
+        // Redirect berdasarkan role
+        if ($user->role === 'admin') {
+            return redirect('/rubick-side-menu-users-layout-2-page')->with('success', 'Logged in as admin.');
+        } else {
+            return redirect('/home')->with('success', 'Logged in successfully.');
+        }
     }
 
-    // Mengubah pesan error login
     return back()->withErrors([
         'email' => 'Akun belum terdaftar.',
     ])->onlyInput('email');
