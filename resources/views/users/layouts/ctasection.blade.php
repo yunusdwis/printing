@@ -43,7 +43,7 @@
                         </h2>
                     </div>
                     <div class="cta-btn mt-3 mt-md-0 wow fadeInUp" data-wow-delay=".5s">
-                        <a href="about.html" class="theme-btn">more about us</a>
+                        <a href="{{ url('/about') }}" class="theme-btn">more about us</a>
                     </div>
                 </div>
                 <div class="cta-image">

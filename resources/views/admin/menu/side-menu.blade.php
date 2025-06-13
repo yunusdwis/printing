@@ -20,7 +20,7 @@
             <a href="{{ url('/rubick-side-menu-users-layout-2-page') }}" 
                class="side-menu {{ Request::is('rubick-side-menu-users-layout-2-page') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon">
-                    <i class="fa-solid fa-wrench"></i>
+                   <i class="fa-solid fa-users"></i>
                 </div>
                 <div class="side-menu__title">
                     Users

@@ -127,6 +127,8 @@
 <!-- Footer Section Start -->
 @include('users.layouts.footer')
 
+@include('users.component.chatbot')
+
      
        
        <!--<< All JS Plugins >>-->
@@ -152,7 +154,7 @@
 <!--<< Counterup Js >>-->
 <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
 <!--<< CustomCountdown Js >>-->
-<script src="{{ asset('assets/js/countdowncustom.js') }}"></script>
+
 <!--<< Swiper Slider Js >>-->
 <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
 <!--<< MeanMenu Js >>-->

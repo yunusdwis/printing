@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iofrm</title>
-    <link rel="stylesheet" type="text/css" href="iofrm/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="iofrm/css/fontawesome-all.min.css">
-    <link rel="stylesheet" type="text/css" href="iofrm/css/iofrm-style.css">
-    <link rel="stylesheet" type="text/css" href="iofrm/css/iofrm-theme20.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('iofrm/css/bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('iofrm/css/fontawesome-all.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('iofrm/css/iofrm-style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('iofrm/css/iofrm-theme20.css') }}">
 </head>
 <body>
     <div class="form-body without-side">
@@ -90,9 +90,10 @@
     </div>
 
     <!-- Pastikan jQuery dan Bootstrap loaded dengan benar -->
-    <script src="iofrm/js/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="iofrm/js/main.js"></script>
+<script src="{{ asset('iofrm/js/jquery.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('iofrm/js/main.js') }}"></script>
+
 
     <!-- SCRIPT UNTUK TAMPILKAN MODAL JIKA ADA ERROR -->
     @if(session('error'))

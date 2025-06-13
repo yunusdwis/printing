@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-Route::get('/home', function () {
-    return view('users.index');
-});
+use App\Http\Controllers\HomeController;
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 Route::get('/customprint', function () {
     return view('users.customprint');
@@ -138,7 +139,7 @@ Route::get('/about', function () {
 
 
 /*
-Route admin rubick
+Route admin 
 */
 
 use App\Http\Controllers\CategoryController;
@@ -172,10 +173,11 @@ Route::put('/services/{id}', [ServiceController::class, 'update'])->name('servic
 Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
 
 
+use App\Http\Controllers\DashboardAdminController;
 
-Route::get('/rubick-side-menu-dashboard-overview-1-page', function () {
-    return view('admin.rubick-side-menu-dashboard-overview-1-page');
-});
+Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard');
+Route::get('/dashboard/stats', [DashboardAdminController::class, 'getStats']);
+
 
 
 

@@ -32,6 +32,23 @@
 <link rel="stylesheet" href="{{ asset('assets/css/color.css') }}">
 <!--<< Main.css >>-->
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+<style>
+        .product-image {
+    width: 100%; /* Lebar container gambar */
+    height: 200px; /* Tinggi container gambar */
+    overflow: hidden; /* Memotong bagian gambar yang lebih besar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mengisi container dengan proporsi gambar */
+    border-radius: 6px; /* Opsional untuk sudut melengkung */
+}
+</style>
     <body>
 
         <!-- Preloader Start -->
@@ -99,7 +116,7 @@
                              Mix and match colors, sizes, and designs
                         </li>
                     </ul>
-                    <a href="shop-details.html" class="theme-btn wow fadeInUp" data-wow-delay=".9s">Custom order</a>
+                    <a href="https://wa.me/6281336589373" class="theme-btn wow fadeInUp" data-wow-delay=".9s">Custom order</a>
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay=".4s">
@@ -289,105 +306,51 @@
             </div>
         </div>
 
+   
         <!-- Service Section Start -->
-<section class="service-section bg-cover section-padding" style="background-image: url('{{ asset('assets/img/service/service-bg.jpg') }}');">
-    <div class="shape-image">
-        <img src="{{ asset('assets/img/service/shape.png') }}" alt="img">
-    </div>
+        <section class="service-section section-padding section-bg-2 fix">
     <div class="container">
         <div class="section-title-area">
             <div class="section-title">
                 <h6 class="wow fadeInUp">More service us</h6>
                 <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                    Create Stunning Print for<br>
-                    <span>Your Business <img src="{{ asset('assets/img/line.png') }}" alt="img"></span>
+                    Create Stunning Print For<br>
+                    <span> Your Business <img src="assets/img/line.png" alt="img"></span>
                 </h2>
             </div>
-            <a href="service.html" class="theme-btn wow fadeInUp" data-wow-delay=".5s">See all Services</a>
+            <a href="{{ route('service.index') }}" class="theme-btn wow fadeInUp" data-wow-delay=".5s">See all Services</a>
         </div>
-    </div>
-    <div class="service-wrapper">
+        <div class="service-wrapper style-2">
         <div class="swiper service-slider">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="service-card-items">
-                        <div class="service-cotent">
-                            <h3><a href="service-details.html">t-shirt printing</a></h3>
-                            <p>Take a trivial example which
-                                of us ever…</p>
-                        </div>
-                        <div class="service-image">
-                            <img src="{{ asset('assets/img/service/01.png') }}" alt="img">
-                        </div>
-                        <div class="service-btn">
-                            <a href="service-details.html" class="link-btn">Read Out More <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
+    <div class="swiper-wrapper">
+        @foreach ($services as $service)
+            <div class="swiper-slide">
+                <div class="service-card-items">
+                    <div class="service-content">
+                        <h3>
+                            <a href="{{ route('service.details', $service->id) }}">
+                                {{ $service->name_service }}
+                            </a>
+                        </h3>
+                        <p>{{ Str::limit($service->description, 10, '...') }}</p>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="service-card-items">
-                        <div class="service-cotent">
-                            <h3><a href="service-details.html">Sticker printing</a></h3>
-                            <p>Take a trivial example which
-                                of us ever…</p>
-                        </div>
-                        <div class="service-image">
-                            <img src="{{ asset('assets/img/service/02.png') }}" alt="img">
-                        </div>
-                        <div class="service-btn">
-                            <a href="service-details.html" class="link-btn">Read Out More <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
+                    <div class="service-image">
+                        <img src="{{ asset('storage/' . $service->main_image) }}" alt="{{ $service->name_service }}"  style="width: 100px; height: 100px; object-fit: cover;">
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="service-card-items">
-                        <div class="service-cotent">
-                            <h3><a href="service-details.html">Digital Scanning</a></h3>
-                            <p>Take a trivial example which
-                                of us ever…</p>
-                        </div>
-                        <div class="service-image">
-                            <img src="{{ asset('assets/img/service/03.png') }}" alt="img">
-                        </div>
-                        <div class="service-btn">
-                            <a href="service-details.html" class="link-btn">Read Out More <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="service-card-items">
-                        <div class="service-cotent">
-                            <h3><a href="service-details.html">Gift item printing</a></h3>
-                            <p>Take a trivial example which
-                                of us ever…</p>
-                        </div>
-                        <div class="service-image">
-                            <img src="{{ asset('assets/img/service/04.png') }}" alt="img">
-                        </div>
-                        <div class="service-btn">
-                            <a href="service-details.html" class="link-btn">Read Out More <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="service-card-items">
-                        <div class="service-cotent">
-                            <h3><a href="service-details.html">t-shirt printing</a></h3>
-                            <p>Take a trivial example which
-                                of us ever…</p>
-                        </div>
-                        <div class="service-image">
-                            <img src="{{ asset('assets/img/service/01.png') }}" alt="img">
-                        </div>
-                        <div class="service-btn">
-                            <a href="service-details.html" class="link-btn">Read Out More <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
+                    <div class="service-btn">
+                        <a href="{{ route('service.details', $service->id) }}" class="link-btn">
+                            Read Out More <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+        @endforeach
+    </div>
+    </div>
         </div>
     </div>
 </section>
+
 
 
         <!-- Feature Section Start -->
@@ -469,1136 +432,47 @@
                 </div>
                 <div class="product-header mt-4 mt-md-0">
                     <ul class="nav">
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".2s">
-                            <a href="#Business" data-bs-toggle="tab" class="nav-link">
-                                Business Cards
-                            </a>
-                        </li>
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".4s">
-                            <a href="#Books" data-bs-toggle="tab" class="nav-link active">
-                                Books & Prints  
-                            </a>
-                        </li>
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".5s">
-                            <a href="#Cloths" data-bs-toggle="tab" class="nav-link">
-                                T-shirt & Cloths
-                            </a>
-                        </li>
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".6s">
-                            <a href="#Card" data-bs-toggle="tab" class="nav-link">
-                                Invitation Card 
-                            </a>
-                        </li>
-                    </ul>
+        @foreach($categories as $index => $category)
+            <li class="nav-item wow fadeInUp" data-wow-delay=".{{ 2 + $index * 2 }}s">
+                <a href="#{{ Str::slug($category->category_name) }}" 
+                   data-bs-toggle="tab" 
+                   class="nav-link {{ $index == 0 ? 'active' : '' }}">
+                    {{ $category->category_name }}
+                </a>
+            </li>
+        @endforeach
+    </ul>
                 </div>
                 <div class="tab-content">
-                    <div id="Business" class="tab-pane fade">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/01.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
+    @foreach($categories as $index => $category)
+        <div id="{{ Str::slug($category->category_name) }}" class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}">
+            <div class="row">
+                @foreach($category->products as $product)
+                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
+                        <div class="product-box-items">
+                            <div class="product-image">
+                                <img src="{{ asset('storage/' . $product->photo) }}" alt="{{ $product->product_name }}">
+                                <ul class="product-icon d-grid align-items-center">
+                                    <li>
+                                        <a ><i class="fa-sharp fa-regular fa-eye"></i></a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/02.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/03.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/04.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/05.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/06.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/07.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/08.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
+                            <div class="product-content">
+                                
+                                <h6><a>{{ $product->product_name }}</a></h6>
+                                <span>${{ number_format($product->price, 2) }}</span>
                             </div>
                         </div>
                     </div>
-                    <div id="Books" class="tab-pane fade show active">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/01.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
-                                <div class="product-box-items active">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/02.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/03.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/04.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/05.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".4s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/06.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".6s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/07.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".8s">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/08.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="Cloths" class="tab-pane fade">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/01.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/02.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/03.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/04.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/05.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/06.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/07.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/08.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="Card" class="tab-pane fade">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/01.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/02.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/03.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/04.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/05.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/06.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/07.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6">
-                                <div class="product-box-items">
-                                    <div class="product-image">
-                                        <img src="assets/img/product/08.jpg" alt="img">
-                                        <ul class="product-icon d-grid align-items-center">
-                                            <li>
-                                                <a href="shop-cart.html"><i class="fa-sharp fa-regular fa-eye"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-cart.html">
-                                                    <i class="fa-regular fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="shop-details.html"><i class="fa-regular fa-arrow-up-arrow-down"></i></a>
-                                            </li>
-                                        </ul>
-                                        <div class="shop-btn">
-                                            <a href="shop-cart.html" class="theme-btn">Add To Cart</a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="star">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="color-2 fa-solid fa-star"></i>
-                                        </div>
-                                        <h6><a href="shop-details.html">Calendar printing design</a></h6>
-                                        <span>$112.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+            </div>
+        </div>
+    @endforeach
+</div>
+
                 <div class="shop-button text-center mt-5 wow fadeInUp" data-wow-delay=".4s">
-                    <a href="shop.html" class="theme-btn">View all Product</a>
+                    <a href="{{ url('/shop') }}" class="theme-btn">View all Product</a>
                 </div>
             </div>
         </section>
@@ -1750,7 +624,7 @@
         <!-- About Feature Section Start -->
         <section class="about-feature-section fix section-padding pt-0 bg-cover" style="background-image: url('assets/img/feature/bg.png');">
             <div class="product-shape float-bob-x">
-                <img src="assets/img/about/product-shape.png" alt="img">
+                <img src="{{ asset('assets/img/about/product-shape.png') }}" alt="img">
             </div>
             <div class="container">
                 <div class="about-feature-wrapper">
@@ -1758,12 +632,12 @@
                         <div class="col-lg-6">
                             <div class="about-image-items">
                                 <div class="about-feature-image">
-                                    <img src="assets/img/about/04.jpg" alt="img" class="wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                                    <img src="{{ asset('assets/img/about/04.jpg') }}" alt="img" class="wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.1s">
                                     <div class="about-feature-image reveal image-anime">
-                                        <img src="assets/img/about/05.jpg" alt="img">
+                                        <img src="{{ asset('assets/img/about/05.jpg') }}" alt="img">
                                     </div>
                                     <div class="stickers-shape">
-                                        <img src="assets/img/feature/StickersV30.png" alt="img">
+                                        <img src="{{ asset('assets/img/feature/StickersV30.png') }}" alt="img">
                                     </div>
                                 </div>
                             </div>
@@ -1774,7 +648,7 @@
                                     <h6 class="wow fadeInUp">More about us</h6>
                                     <h2 class="wow fadeInUp" data-wow-delay=".3s">
                                         How Print-On-Demand
-                                        <span><img src="assets/img/line.png" alt="img">Drop Shipping</span> Works
+                                        <span><img src="{{ asset('assets/img/line.png') }}" alt="img">Drop Shipping</span> Works
                                     </h2>
                                 </div>
                                 <div class="box-items-area mt-3 mt-md-0">
@@ -1874,327 +748,21 @@
         </section>
 
         <!-- Pricing Section Start -->
-        <section class="pricing-section section-padding pt-0">
-            <div class="shape-image float-bob-y">
-                <img src="assets/img/pricing-shape.png" alt="img">
-            </div>
-            <div class="shape-image-2">
-                <img src="assets/img/pricing-line.png" alt="img">
-            </div>
-            <div class="circle-shape">
-                <img src="assets/img/circle.png" alt="img">
-            </div>
-            <div class="container">
-                <div class="section-title text-center">
-                    <h6 class="wow fadeInUp">Digital printing Service</h6>
-                    <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                        Our Populer Pricing Plan<br>
-                        By Company
-                    </h2>
-                </div>
-                <div class="pricing-tab-header">
-                    <ul class="nav" role="tablist">
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".3s" role="presentation">
-                            <a href="#monthly" data-bs-toggle="tab" class="nav-link active" aria-selected="true" role="tab">
-                            Monthly
-                            </a>
-                        </li>
-                        <li class="nav-item wow fadeInUp" data-wow-delay=".5s" role="presentation">
-                            <a href="#yearly" data-bs-toggle="tab" class="nav-link" aria-selected="false" role="tab" tabindex="-1">
-                            Yearly
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tab-content">
-                    <div id="monthly" class="tab-pane fade show active" role="tabpanel">
-                        <div class="row">
-                            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".3s">
-                                <div class="pricing-box-items">
-                                    <div class="pricing-header">
-                                        <div class="icon">
-                                            <img src="assets/img/icon/03.svg" alt="img">
-                                        </div>
-                                        <h3>Personal Plan</h3>
-                                        <span>Customized anything in anytime</span>
-                                    </div>
-                                    <ul class="pricing-list">
-                                        <li><i class="fa-solid fa-circle-check"></i> 3-5 days turnaround</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Native Development</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Task delivered one-by one</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Dedicated dashboard</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Updates via dashboard & slack</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> 50k design & prints</li>
-                                    </ul>
-                                    <div class="pricing-btn">
-                                        <a href="contact.html" class="theme-btn">
-                                            <span class="theme-effect">
-                                                <span class="effect-1">choose pricing plan</span>
-                                                <span class="effect-1">$2500/ Month</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                                <div class="pricing-box-items active">
-                                    <div class="pricing-tag">
-                                        <img src="assets/img/pricing-tag.png" alt="img">
-                                    </div>
-                                    <div class="pricing-header">
-                                        <div class="icon">
-                                            <img src="assets/img/icon/03.svg" alt="img">
-                                        </div>
-                                        <h3>Personal Plan</h3>
-                                        <span>Customized anything in anytime</span>
-                                    </div>
-                                    <ul class="pricing-list">
-                                        <li><i class="fa-solid fa-circle-check"></i> 3-5 days turnaround</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Native Development</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Task delivered one-by one</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Dedicated dashboard</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Updates via dashboard & slack</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> 50k design & prints</li>
-                                    </ul>
-                                    <div class="pricing-btn">
-                                        <a href="contact.html" class="theme-btn">
-                                            <span class="theme-effect">
-                                                <span class="effect-1">choose pricing plan</span>
-                                                <span class="effect-1">$2500/ Month</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay=".7s">
-                                <div class="pricing-box-items">
-                                    <div class="pricing-header">
-                                        <div class="icon">
-                                            <img src="assets/img/icon/03.svg" alt="img">
-                                        </div>
-                                        <h3>Personal Plan</h3>
-                                        <span>Customized anything in anytime</span>
-                                    </div>
-                                    <ul class="pricing-list">
-                                        <li><i class="fa-solid fa-circle-check"></i> 3-5 days turnaround</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Native Development</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Task delivered one-by one</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Dedicated dashboard</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Updates via dashboard & slack</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> 50k design & prints</li>
-                                    </ul>
-                                    <div class="pricing-btn">
-                                        <a href="contact.html" class="theme-btn">
-                                            <span class="theme-effect">
-                                                <span class="effect-1">choose pricing plan</span>
-                                                <span class="effect-1">$2500/ Month</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="yearly" class="tab-pane fade" role="tabpanel">
-                        <div class="row">
-                            <div class="col-xl-4 col-lg-6 col-md-6">
-                                <div class="pricing-box-items">
-                                    <div class="pricing-header">
-                                        <div class="icon">
-                                            <img src="assets/img/icon/03.svg" alt="img">
-                                        </div>
-                                        <h3>Personal Plan</h3>
-                                        <span>Customized anything in anytime</span>
-                                    </div>
-                                    <ul class="pricing-list">
-                                        <li><i class="fa-solid fa-circle-check"></i> 3-5 days turnaround</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Native Development</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Task delivered one-by one</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Dedicated dashboard</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Updates via dashboard & slack</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> 50k design & prints</li>
-                                    </ul>
-                                    <div class="pricing-btn">
-                                        <a href="contact.html" class="theme-btn">
-                                            <span class="theme-effect">
-                                                <span class="effect-1">choose pricing plan</span>
-                                                <span class="effect-1">$2500/ Month</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-6 col-md-6">
-                                <div class="pricing-box-items active">
-                                    <div class="pricing-tag">
-                                        <img src="assets/img/pricing-tag.png" alt="img">
-                                    </div>
-                                    <div class="pricing-header">
-                                        <div class="icon">
-                                            <img src="assets/img/icon/03.svg" alt="img">
-                                        </div>
-                                        <h3>Personal Plan</h3>
-                                        <span>Customized anything in anytime</span>
-                                    </div>
-                                    <ul class="pricing-list">
-                                        <li><i class="fa-solid fa-circle-check"></i> 3-5 days turnaround</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Native Development</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Task delivered one-by one</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Dedicated dashboard</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Updates via dashboard & slack</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> 50k design & prints</li>
-                                    </ul>
-                                    <div class="pricing-btn">
-                                        <a href="contact.html" class="theme-btn">
-                                            <span class="theme-effect">
-                                                <span class="effect-1">choose pricing plan</span>
-                                                <span class="effect-1">$2500/ Month</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-6 col-md-6">
-                                <div class="pricing-box-items">
-                                    <div class="pricing-header">
-                                        <div class="icon">
-                                            <img src="assets/img/icon/03.svg" alt="img">
-                                        </div>
-                                        <h3>Personal Plan</h3>
-                                        <span>Customized anything in anytime</span>
-                                    </div>
-                                    <ul class="pricing-list">
-                                        <li><i class="fa-solid fa-circle-check"></i> 3-5 days turnaround</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Native Development</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Task delivered one-by one</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Dedicated dashboard</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> Updates via dashboard & slack</li>
-                                        <li><i class="fa-solid fa-circle-check"></i> 50k design & prints</li>
-                                    </ul>
-                                    <div class="pricing-btn">
-                                        <a href="contact.html" class="theme-btn">
-                                            <span class="theme-effect">
-                                                <span class="effect-1">choose pricing plan</span>
-                                                <span class="effect-1">$2500/ Month</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <section class="pricing-section section-padding pt-0">
+        <div class="shape-image float-bob-y">
+            <img src="{{ asset('assets/img/pricing-shape.png') }}" alt="img">
+        </div>
+        <div class="shape-image-2">
+            <img src="{{ asset('assets/img/pricing-line.png') }}" alt="img">
+        </div>
+        <div class="circle-shape">
+            <img src="{{ asset('assets/img/circle.png') }}" alt="img">
+        </div>
+            </section>
+
 
         <!-- Testimonial Section Start -->
-        <section class="testimonial-section section-padding fix bg-cover" style="background-image: url('assets/img/testimonial/testimonial-bg.jpg');">
-            <div class="array-button">
-                <button class="array-prev"><i class="fa-regular fa-chevron-left"></i></button>
-                <button class="array-next"><i class="fa-regular fa-chevron-right"></i></button>
-            </div>
-            <div class="container">
-                <div class="testimonial-wrapper">
-                    <div class="row g-4 justify-content-between align-items-center">
-                        <div class="col-lg-7">
-                            <div class="section-title">
-                                <h6 class="wow fadeInUp">More about us</h6>
-                                <h2 class="text-white split-text right">
-                                    Create Stunning Print For <br>
-                                    <span>Your Business <img src="assets/img/line.png" alt="img"></span>
-                                </h2>
-                            </div>
-                            <div class="swiper testimonial-slider">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-content mt-4 mt-md-0">
-                                            <p>
-                                                Climb the mountain not to plant your flag but to embrace
-                                                the ways challenge, enjoy the air, and behold the. Climb it
-                                                see the world, not so the world can see you. This is due to 
-                                                excellent service competitive pricing their 
-                                            </p>
-                                            <div class="client-info">
-                                                <h3>
-                                                    Robert J. Hare/ <span>Graphics Designer</span>
-                                                </h3>
-                                                <div class="star">
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-content mt-4 mt-md-0">
-                                            <p>
-                                                Climb the mountain not to plant your flag but to embrace
-                                                the ways challenge, enjoy the air, and behold the. Climb it
-                                                see the world, not so the world can see you. This is due to 
-                                                excellent service competitive pricing their 
-                                            </p>
-                                            <div class="client-info">
-                                                <h3>
-                                                    Robert J. Hare/ <span>Graphics Designer</span>
-                                                </h3>
-                                                <div class="star">
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="testimonial-content mt-4 mt-md-0">
-                                            <p>
-                                                Climb the mountain not to plant your flag but to embrace
-                                                the ways challenge, enjoy the air, and behold the. Climb it
-                                                see the world, not so the world can see you. This is due to 
-                                                excellent service competitive pricing their 
-                                            </p>
-                                            <div class="client-info">
-                                                <h3>
-                                                    Robert J. Hare/ <span>Graphics Designer</span>
-                                                </h3>
-                                                <div class="star">
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                    <i class="fa-solid fa-star"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-5">
-                            <div class="testimoni-image-items">
-                                <div class="line-shape">
-                                    <img src="assets/img/testimonial/line.png" alt="shape-img">
-                                </div>
-                                <div class="testimoni-image reveal image-anime">
-                                    <img src="assets/img/testimonial/testimonial.png" alt="img">
-                                </div>
-                                <h2 class="work-shape">
-                                    <img src="assets/img/testimonial/work-shape.png" alt="img">
-                                </h2>
-                                <div class="icon">
-                                    <i class="fa-solid fa-quote-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
 
         <!-- Blog Section Start -->
         <section class="blog-section section-padding pt-0 bg-cover" style="background-image: url('assets/img/news/bg.png');">
@@ -2208,84 +776,39 @@
             </div>
             <div class="blog-wrapper">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-6 col-md-6 wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.1s">
-                            <div class="blog-box-items">
-                                <div class="blog-image">
-                                    <img src="assets/img/news/01.jpg" alt="img">
-                                    <img src="assets/img/news/01.jpg" alt="img">
-                                </div>
-                                <div class="blog-content">
-                                    <span>e-Learning</span>
-                                        <h3>
-                                            <a href="news-details.html">Meet Success the Cale Smashing
-                                        Book By Addy Osmania</a>
-                                        </h3>
-                                        <ul class="blog-meta">
-                                            <li>
-                                                <i class="fa-regular fa-user"></i>
-                                                Roger J. Spaulding
-                                            </li>
-                                            <li>
-                                                <i class="fa-regular fa-comment"></i>
-                                                Comments (5)
-                                            </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.2s">
-                            <div class="blog-box-items">
-                                <div class="blog-image">
-                                    <img src="assets/img/news/02.jpg" alt="img">
-                                    <img src="assets/img/news/02.jpg" alt="img">
-                                </div>
-                                <div class="blog-content">
-                                    <span>e-Learning</span>
-                                    <h3>
-                                        <a href="news-details.html">Meet Success the Cale Smashing
-                                        Book By Addy Osmania</a>
-                                    </h3>
-                                    <ul class="blog-meta">
-                                        <li>
-                                            <i class="fa-regular fa-user"></i>
-                                            Roger J. Spaulding
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-comment"></i>
-                                            Comments (5)
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.4s">
-                            <div class="blog-box-items">
-                                <div class="blog-image">
-                                    <img src="assets/img/news/03.jpg" alt="img">
-                                    <img src="assets/img/news/03.jpg" alt="img">
-                                </div>
-                                <div class="blog-content">
-                                    <span>e-Learning</span>
-                                    <h3>
-                                        <a href="news-details.html">Meet Success the Cale Smashing
-                                        Book By Addy Osmania</a>
-                                    </h3>
-                                    <ul class="blog-meta">
-                                        <li>
-                                            <i class="fa-regular fa-user"></i>
-                                            Roger J. Spaulding
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-comment"></i>
-                                            Comments (5)
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    @foreach ($blogs as $blog)
+        <div class="col-xl-4 col-lg-6 col-md-6 wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.1s">
+            <div class="blog-box-items">
+                <div class="blog-image">
+    <img src="{{ asset('storage/' . $blog->gambar) }}" alt="img" style="width: 100%; height: 250px; object-fit: cover; display: block;">
+    <img src="{{ asset('storage/' . $blog->gambar) }}" alt="img" style="width: 100%; height: 250px; object-fit: cover; display: block;">
+</div>
+
+                <div class="blog-content">
+                    <span>{{ $blog->judul }}</span>
+                    <h3>
+                        <a href="{{ route('blog.detail', $blog->id) }}"> <!-- Ganti "#" dengan route detail blog jika sudah ada -->
+                           {!! \Illuminate\Support\Str::limit($blog->isi_blog, 150, '...') !!}
+                        </a>
+                    </h3>
+                    <ul class="blog-meta">
+                        <li>
+                            <i class="fa-regular fa-user"></i>
+                            {{ $blog->created_at->format('d M Y') }}
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-comment"></i>
+                            Views ({{ $blog->view }})
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @endforeach
+</div>
+
                     <div class="news-button text-center mt-5 wow fadeInUp" data-wow-delay=".3s">
-                        <a href="news.html" class="theme-btn">See all News</a>
+                        <a href="{{ url('/blogs') }}" class="theme-btn">See all News</a>
                     </div>
             </div>
             </div>
@@ -2296,6 +819,8 @@
 
     <!-- Footer Section Start -->
     @include('users.layouts.footer')
+
+    @include('users.component.chatbot')
        
         <!--<< All JS Plugins >>-->
 <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
@@ -2331,6 +856,25 @@
 <script src="{{ asset('assets/js/wow.min.js') }}"></script>
 <!--<< Main.js >>-->
 <script src="{{ asset('assets/js/main.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const swiper = new Swiper('.swiper.service-slider', {
+            loop: false,
+            slidesPerView: 1,
+            spaceBetween: 10,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    });
+</script>
+
     </body>
 
 <!-- Mirrored from devsaidul.com/ui/prinoz-gsap/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 07 Feb 2025 04:34:56 GMT -->

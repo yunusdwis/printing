@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iofrm</title>
-    <link rel="stylesheet" type="text/css" href="iofrm/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="iofrm/css/fontawesome-all.min.css">
-    <link rel="stylesheet" type="text/css" href="iofrm/css/iofrm-style.css">
-    <link rel="stylesheet" type="text/css" href="iofrm/css/iofrm-theme20.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('iofrm/css/bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('iofrm/css/fontawesome-all.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('iofrm/css/iofrm-style.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('iofrm/css/iofrm-theme20.css') }}">
+
 </head>
 
 <body>
@@ -24,7 +25,7 @@
             <div class="img-holder">
                 <div class="bg"></div>
                 <div class="info-holder">
-                    <img src="iofrm/images/graphic3.svg" alt="">
+                    <img src="{{ asset('iofrm/images/graphic3.svg') }}" alt="">
                 </div>
             </div>
             <div class="form-holder">
@@ -56,10 +57,11 @@
         </div>
     </div>
 
-    <script src="iofrm/js/jquery.min.js"></script>
-    <script src="iofrm/js/popper.min.js"></script>
-    <script src="iofrm/js/bootstrap.bundle.min.js"></script>
-    <script src="iofrm/js/main.js"></script>
+<script src="{{ asset('iofrm/js/jquery.min.js') }}"></script>
+<script src="{{ asset('iofrm/js/popper.min.js') }}"></script>
+<script src="{{ asset('iofrm/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('iofrm/js/main.js') }}"></script>
+
 </body>
 
 </html>

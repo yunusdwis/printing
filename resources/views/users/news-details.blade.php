@@ -175,13 +175,7 @@
 
                             </div>
                             <div class="col-lg-4 col-12 mt-3 mt-lg-0 text-lg-end">
-                                <div class="social-share">
-                                    <span class="me-3">Share:</span>
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>                                    
-                                    <a href="#"><i class="fab fa-youtube"></i></a>                                    
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -255,6 +249,8 @@
 
     <!-- Footer Section Start -->
     @include('users.layouts.footer')
+
+    @include('users.component.chatbot')
        
         <!--<< All JS Plugins >>-->
 <script src="{{ asset('assets/js/jquery-3.7.1.min.js') }}"></script>
@@ -279,7 +275,7 @@
 <!--<< Counterup Js >>-->
 <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
 <!--<< CustomCountdown Js >>-->
-<script src="{{ asset('assets/js/countdowncustom.js') }}"></script>
+
 <!--<< Swiper Slider Js >>-->
 <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
 <!--<< MeanMenu Js >>-->

@@ -97,7 +97,7 @@
                         <p>{{ Str::limit($service->description, 10, '...') }}</p>
                     </div>
                     <div class="service-image">
-                        <img src="{{ asset('storage/' . $service->main_image) }}" alt="{{ $service->name_service }}">
+                        <img src="{{ asset('storage/' . $service->main_image) }}" alt="{{ $service->name_service }}"  style="width: 100px; height: 100px; object-fit: cover;">
                     </div>
                     <div class="service-btn">
                         <a href="{{ route('service.details', $service->id) }}" class="link-btn">
@@ -299,6 +299,8 @@
     <!-- Footer Section Start -->
     @include('users.layouts.footer')
 
+    @include('users.component.chatbot')
+
         
         <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
         <!--<< All JS Plugins >>-->
@@ -324,7 +326,7 @@
 <!--<< Counterup Js >>-->
 <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
 <!--<< CustomCountdown Js >>-->
-<script src="{{ asset('assets/js/countdowncustom.js') }}"></script>
+
 <!--<< Swiper Slider Js >>-->
 <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
 <!--<< MeanMenu Js >>-->

@@ -50,7 +50,7 @@
                             </div>
                             <ul class="list-items">
                                 <li>
-                                    <a href="contact.html">
+                                    <a href="{{ url('/contact') }}">
                                         Contact us
                                     </a>
                                 </li>
@@ -59,12 +59,12 @@
                                 <li>
                                 </li>
                                 <li>
-                                    <a href="service-details.html">
+                                    <a href="{{ url('/service') }}">
                                         Explore
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="contact.html">
+                                    <a href="{{ url('/contact') }}">
                                         Terms & Services
                                     </a>
                                 </li>
@@ -78,19 +78,19 @@
                             </div>
                             <ul class="list-items">
                                 <li>
-                                    <a href="contact.html">
+                                    <a href="{{ url('/contact') }}">
                                         Help Center
                                     </a>
                                 </li>
                                 <li>
                                 </li>
                                 <li>
-                                    <a href="contact.html">
+                                    <a href="{{ url('/contact') }}">
                                         Suggestions
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="news.html">
+                                    <a href="{{ url('/blogs') }}">
                                         Blog
                                     </a>
                                 </li>
@@ -113,7 +113,7 @@
                                         <a href="mailto:contact@info.com" class="link">test@gmail.com</a>
                                     </li>
                                     <li>
-                                        <a href="tel:+8060008899">081336589373</a>
+                                        <a href="https://wa.me/6281336589373">081336589373</a>
                                     </li>
                                 </ul>
                             </div>

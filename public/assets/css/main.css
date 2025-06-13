@@ -2879,7 +2879,7 @@ span {
   bottom: 0;
   width: 1px;
   height: 85px;
-  background-color: #ECECEC;
+ 
 }
 @media (max-width: 1399px) {
   .header-1 .mega-menu-wrapper::before {

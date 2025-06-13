@@ -235,6 +235,8 @@
 
     <!-- Footer Section Start -->
     @include('users.layouts.footer')
+
+    @include('users.component.chatbot')
         
        
        <!--<< All JS Plugins >>-->

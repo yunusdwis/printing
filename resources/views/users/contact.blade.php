@@ -56,10 +56,10 @@
         <div class="container-fluid">
             <div class="breadcrumb-wrapper bg-cover" style="background-image: url('assets/img/breadcrumb-bg.jpg');">
                 <div class="flower-shape">
-                    <img src="assets/img/flower-shape.png" alt="img">
+                    <img src="{{ asset('assets/img/flower-shape.png') }}" alt="img">
                 </div>
                 <div class="star-shape">
-                    <img src="assets/img/star-shape.png" alt="img">
+                    <img src="{{ asset('assets/img/star-shape.png') }}" alt="img">
                 </div>
                 <div class="container">
                     <div class="page-heading center">
@@ -78,13 +78,13 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".3s">
                     <div class="contact-info-items text-center">
                         <div class="icon">
-                            <img src="assets/img/icon/location.png" alt="icon-img">
+                            <img src="{{ asset('assets/img/icon/location.png') }}" alt="icon-img">
                         </div>
                         <div class="content">
                             <h3>address line</h3>
                             <p>
-                                Bowery St, New York, 37 USA <br>
-                                NY 10013,USA 
+                                surabaya , JL Rungkut <br>
+                               
                             </p>
                         </div>
                     </div>
@@ -92,13 +92,13 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".5s">
                     <div class="contact-info-items active text-center">
                         <div class="icon">
-                            <img src="assets/img/icon/12.svg" alt="icon-img">
+                            <img src="{{ asset('assets/img/icon/12.svg') }}" alt="icon-img">
                         </div>
                         <div class="content">
                             <h3>Phone Number</h3>
                             <p>
-                                +1255 - 568 - 6523 4374-221 <br>
-                                +1255 - 568 - 6523
+                                081336589373 <br>
+                                
                             </p>
                         </div>
                     </div>
@@ -106,13 +106,12 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".7s">
                     <div class="contact-info-items text-center">
                         <div class="icon">
-                            <img src="assets/img/icon/13.svg" alt="icon-img">
+                            <img src="{{ asset('assets/img/icon/13.svg') }}" alt="icon-img">
                         </div>
                         <div class="content">
                             <h3>Mail Adress</h3>
                             <p>
-                                email@example.com <br>
-                                info@yourdomain.com
+                                test@gmail.com <br>
                             </p>
                         </div>
                     </div>
@@ -198,6 +197,8 @@
 <!-- Footer Section Start -->
 @include('users.layouts.footer')
 
+@include('users.component.chatbot')
+
         
        
         <!--<< All JS Plugins >>-->
@@ -225,7 +226,7 @@
 <!--<< Counterup Js >>-->
 <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
 <!--<< CustomCountdown Js >>-->
-<script src="{{ asset('assets/js/countdowncustom.js') }}"></script>
+
 <!--<< Swiper Slider Js >>-->
 <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
 <!--<< MeanMenu Js >>-->

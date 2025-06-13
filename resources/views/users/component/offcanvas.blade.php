@@ -26,7 +26,7 @@
                                        <i class="fal fa-map-marker-alt"></i>
                                    </div>
                                    <div class="offcanvas__contact-text">
-                                       <a target="_blank" href="#">Main Street, Melbourne, Australia</a>
+                                       <a target="_blank" href="#">Surabaya</a>
                                    </div>
                                </li>
                                <li class="d-flex align-items-center">
@@ -34,7 +34,7 @@
                                        <i class="fal fa-envelope"></i>
                                    </div>
                                    <div class="offcanvas__contact-text">
-                                       <a href="mailto:info@example.com"><span class="mailto:info@example.com">info@example.com</span></a>
+                                       <a href="mailto:info@example.com"><span class="mailto:info@example.com">test@gmail.com</span></a>
                                    </div>
                                </li>
                                <li class="d-flex align-items-center">
@@ -50,7 +50,7 @@
                                        <i class="far fa-phone"></i>
                                    </div>
                                    <div class="offcanvas__contact-text">
-                                       <a href="tel:+11002345909">+11002345909</a>
+                                       <a href="tel:+11002345909">081336589373</a>
                                    </div>
                                </li>
                            </ul>
@@ -60,10 +60,7 @@
                                </a>
                            </div>
                            <div class="social-icon d-flex align-items-center">
-                               <a href="#"><i class="fab fa-facebook-f"></i></a>
-                               <a href="#"><i class="fab fa-twitter"></i></a>
                                <a href="#"><i class="fab fa-youtube"></i></a>
-                               <a href="#"><i class="fab fa-linkedin-in"></i></a>
                            </div>
                        </div>
                    </div>

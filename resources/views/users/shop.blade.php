@@ -13,7 +13,7 @@
         <!-- ======== Page title ============ -->
         <title>Prinoz - Printing company & Service Html Template</title>
         <!--<< Favcion >>-->
-        <link rel="shortcut icon" href="{{ asset('assets/img/favicon.svg') }}">
+<link rel="shortcut icon" href="{{ asset('assets/img/favicon.svg') }}">
 <!--<< Bootstrap min.css >>-->
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 <!--<< All Min Css >>-->
@@ -179,8 +179,6 @@
 <script src="{{ asset('assets/js/jquery.waypoints.js') }}"></script>
 <!--<< Counterup Js >>-->
 <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
-<!--<< CustomCountdown Js >>-->
-
 <!--<< Swiper Slider Js >>-->
 <script src="{{ asset('assets/js/swiper-bundle.min.js') }}"></script>
 <!--<< MeanMenu Js >>-->
